@@ -6,32 +6,47 @@
         <div class='row'>
             <div class='col-md-2'>Filter by:</div>
             <div class='col-md-4'>
-                <input type='text'/>
+                <input type='text' [(ngModel)]='filterText'/>
             </div>
         </div>
         <div class='row'>
             <div class='col-md-6'>
-                <h4>Filtered by:</h4>
+                <h4>Filtered by: {{filterText}}</h4>
             </div>
         </div>
         <div class='table-responsive'>
-                <table class='table'>
+                <table class='table'
+                        *ngIf='dances && dances.length'>
                   <thead>
                     <tr>
                       <th>
-                        <button class='btn btn-primary'>
-                          Show Image
+                        <button class='btn btn-primary'
+                        (click)='toggleImage()'>
+                          {{showImage ? 'Hide' : 'Show'}} Image
                         </button>
                       </th>
-                      <th>Product</th>
-                      <th>Code</th>
-                      <th>Available</th>
-                      <th>Price</th>
+                      <th>Style</th>
+                      <th>Country</th>
+                      <th>Available in TO</th>
+                      <th>Monthly Price</th>
                       <th>5 Star Rating</th>
                     </tr>
                   </thead>
                   <tbody>
-
+                      <tr *ngFor='let danceStyle of dances'>
+                        <td>
+                            <img *ngIf='showImage'
+                            [src]='danceStyle.imageUrl'
+                            [title]='danceStyle.styleName'
+                            [style.width.px]='imageWidth'
+                            [style.margin.px]='imageMargin'                            >
+                        </td>
+                        <td>{{danceStyle.styleName}}</td>
+                        <td>{{danceStyle.styleCountry}}</td>
+                        <td>{{danceStyle.availableInTo}}</td>
+                        <td>{{danceStyle.price}}</td>
+                        <td>{{danceStyle.starRating}}</td>
+                      </tr>
                   </tbody>
                 </table>
               </div>
