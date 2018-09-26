@@ -33,7 +33,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor='let danceStyle of dances'>
+                      <tr *ngFor='let danceStyle of filteredDances'>
                         <td>
                             <img *ngIf='showImage'
                             [src]='danceStyle.imageUrl'
@@ -41,10 +41,10 @@
                             [style.width.px]='imageWidth'
                             [style.margin.px]='imageMargin'                            >
                         </td>
-                        <td>{{danceStyle.styleName}}</td>
+                        <td>{{danceStyle.styleName | convertToLegendary}}</td>
                         <td>{{danceStyle.styleCountry}}</td>
                         <td>{{danceStyle.availableInTo}}</td>
-                        <td>{{danceStyle.price}}</td>
+                        <td>{{danceStyle.price | currency}}</td>
                         <td>{{danceStyle.starRating}}</td>
                       </tr>
                   </tbody>

@@ -4,11 +4,13 @@ import { FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DanceListComponent } from './dances/dance-list.component';
+import { ConvertToLegendary} from './shared/convert-to-legendary.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
-    DanceListComponent
+    DanceListComponent,
+    ConvertToLegendary
   ],
   imports: [
     BrowserModule,
